@@ -1,0 +1,53 @@
+.login-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+    .login-left-container {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .login-welcome-wrapper {
+            margin-bottom: 50px;
+
+            .login-welcome-text {
+                font-size: 40px;
+            }
+        }
+
+        .login-form-container {
+            .login-input-wrapper {
+                margin-bottom: 20px;
+                width: 25vw;
+
+                .login-form-input {
+                    width: 100%;
+                }
+
+                .MuiFormHelperText-root {
+                    color: red;
+                }
+            }
+
+            .login-button {
+                margin-top: 10px;
+                width: 100%;
+                background-color: blue;
+            }
+
+        }
+    }
+
+    .login-right-container {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: blue;
+    }
+
+}
