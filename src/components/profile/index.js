@@ -5,8 +5,14 @@ import TextField from "@material-ui/core/TextField";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "../../styles/profile.scss";
 import { profileValidation } from "../utiles/validation";
+import { useSelector, useDispatch } from "react-redux";
+import { profileModal } from "../../datastore/slice/modal";
 
-export default function Profile({ isOpen, onOpenChange }) {
+export default function Profile() {
+  const dispatch = useDispatch();
+
+  const profile = useSelector((state) => state.modal);
+
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -31,7 +37,7 @@ export default function Profile({ isOpen, onOpenChange }) {
     ) {
       return;
     }
-    onOpenChange(open);
+    dispatch(profileModal(open))
   };
 
   const onProfileSave = () => {
@@ -59,7 +65,7 @@ export default function Profile({ isOpen, onOpenChange }) {
       <SwipeableDrawer
         className="profile-swipeable-container"
         anchor={"right"}
-        open={isOpen}
+        open={profile.profileModal}
         onClose={toggleDrawer("right", false)}
         onOpen={toggleDrawer("right", true)}
       >

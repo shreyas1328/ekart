@@ -1,19 +1,20 @@
 import storage from 'redux-persist/lib/storage'
 import {combineReducers} from 'redux';
-import {persistCombineReducers} from 'redux-persist';
 import persistReducer from 'redux-persist/es/persistReducer';
 
-import screenDimension from './slice/login';
+import login from './slice/login';
+import modal from './slice/modal';
 
 const reducer = combineReducers({
-  screenDimension,
+  login,
+  modal,
 });
 
 const rootReducer = persistReducer(
   {
     key: 'root',
     storage: storage,
-    whitelist: [],
+    whitelist: ["login"],
   },
   reducer,
 );

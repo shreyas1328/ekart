@@ -1,26 +1,23 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 
 // Define the initial state using that type
 const initialState = {
-  width:0,
-  height:0,
-  baseHeight:0,
+  username:"",
+  password:"",
 }
 
-export const screenDimensionSlice = createSlice({
-  name: 'ScreenDimension',
-  // `createSlice` will infer the state type from the `initialState` argument
+export const loginSlice = createSlice({
+  name: 'login',
   initialState,
   reducers: {
-    getScreenDimension: (state, action) => {
-      state.width = action.payload.width;
-      state.height = action.payload.height;
-      state.baseHeight = action.payload.baseHeight;
+    getLoginData: (state, action) => {
+      state.username = action.payload.username;
+      state.password = action.payload.password;
     },
   },
 })
 
-export const { getScreenDimension } = screenDimensionSlice.actions;
+export const { getLoginData } = loginSlice.actions;
 
-export default screenDimensionSlice.reducer
+export default loginSlice.reducer

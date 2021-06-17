@@ -4,8 +4,11 @@ import "../../styles/login.scss";
 import { Logo } from "../utiles/utiles";
 import Button from "@material-ui/core/Button";
 import { loginValidation } from "../utiles/validation";
+import {getLoginData} from '../../datastore/slice/login';
+import {useDispatch} from 'react-redux';
 
 export default function Login() {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     username: "",
     password: "",
@@ -36,7 +39,7 @@ export default function Login() {
   };
 
   const onLoggedIn = () => {
-    console.log("loggrf");
+    dispatch(getLoginData(state))
   };
 
   return (
