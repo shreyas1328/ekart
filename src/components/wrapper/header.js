@@ -10,6 +10,7 @@ import { logoutModal, profileModal } from "../../datastore/slice/modal";
 
 export default function Header() {
   const history = useHistory();
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const onCartClick = () => {
@@ -24,14 +25,18 @@ export default function Header() {
     dispatch(profileModal(true));
   };
 
+  const onLogoClick = () => {
+    history.push("/")
+  }
+
   return (
     <div className="header-container">
       <div className="header-left-container">
-        <Logo color="#000000" size="25px" />
+        <Logo color="#000000" size="25px" onClick={onLogoClick} isPointer />
       </div>
       <div className="header-right-container">
         <div className="cart-container" onClick={onCartClick}>
-          <p className="cart-count">1</p>
+          {cart.cartAllData.length > 0 ? <p className="cart-count">{cart.cartAllData.length}</p> : <></>}
 
           <ShoppingCartIcon style={{ fontSize: "28px" }} color="#000000" />
         </div>

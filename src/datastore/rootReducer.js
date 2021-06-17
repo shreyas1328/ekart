@@ -4,10 +4,16 @@ import persistReducer from 'redux-persist/es/persistReducer';
 
 import login from './slice/login';
 import modal from './slice/modal';
+import home from './slice/home';
+import description from './slice/description';
+import cart from './slice/cart';
 
 const reducer = combineReducers({
   login,
   modal,
+  home,
+  description,
+  cart,
 });
 
 const rootReducer = persistReducer(

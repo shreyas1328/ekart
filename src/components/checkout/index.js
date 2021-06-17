@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography'
 import CheckoutTile from './comps/tile';
 import '../../styles/checkout.scss';
 import CheckoutDetails from './comps/checkoutDetails';
+import {useSelector} from 'react-redux';
 
 const data =   {
     id: 1,
@@ -14,18 +15,15 @@ const data =   {
   };
 
 export default function Checkout() {
+
+    const {cartAllData} = useSelector((state) => state.cart);
+
     return (
         <div className="checkout-container" >
             <Typography className="checkout-title" component="h4" variant="h4"  >Checkout</Typography>
            <div className="checkout-main">
            <div className="checkout-left-container" >
-            <CheckoutTile data={data} />
-            <CheckoutTile data={data} />
-            <CheckoutTile data={data} />
-            <CheckoutTile data={data} />
-            <CheckoutTile data={data} />
-            <CheckoutTile data={data} />
-            <CheckoutTile data={data} />
+               {cartAllData.map((val,index) =>   <CheckoutTile data={val} />)}
             </div>
             <div className="checkout-right-container" >
             <CheckoutDetails />

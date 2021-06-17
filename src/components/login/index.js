@@ -85,7 +85,7 @@ export default function Login() {
         </form>
       </div>
       <div className="login-right-container">
-        <Logo color="#ffffff" size="70px" />
+        <Logo color="#ffffff" size="70px" onClick={() => {}} />
       </div>
     </div>
   );

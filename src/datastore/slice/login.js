@@ -15,9 +15,13 @@ export const loginSlice = createSlice({
       state.username = action.payload.username;
       state.password = action.payload.password;
     },
+    clearLoginData: (state, action) => {
+      state.username = "";
+      state.password = "";
+    },
   },
 })
 
-export const { getLoginData } = loginSlice.actions;
+export const { getLoginData, clearLoginData } = loginSlice.actions;
 
 export default loginSlice.reducer
