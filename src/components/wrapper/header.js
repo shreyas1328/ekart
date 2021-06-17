@@ -7,6 +7,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutModal, profileModal } from "../../datastore/slice/modal";
+import Tooltip from "@material-ui/core/Tooltip";
 
 export default function Header() {
   const history = useHistory();
@@ -41,14 +42,19 @@ export default function Header() {
           ) : (
             <></>
           )}
-
-          <ShoppingCartIcon style={{ fontSize: "28px", color: "#000000" }} />
+          <Tooltip title="Cart">
+            <ShoppingCartIcon style={{ fontSize: "28px", color: "#000000" }} />
+          </Tooltip>
         </div>
         <div className="profile-container" onClick={onProfile}>
-          <AccountCircleIcon style={{ fontSize: "28px", color: "#000000" }} />
+          <Tooltip title="Profile">
+            <AccountCircleIcon style={{ fontSize: "28px", color: "#000000" }} />
+          </Tooltip>
         </div>
         <div className="profile-container" onClick={onLogout}>
-          <ExitToAppIcon style={{ fontSize: "28px", color: "#000000" }} />
+          <Tooltip title="Logout">
+            <ExitToAppIcon style={{ fontSize: "28px", color: "#000000" }} />
+          </Tooltip>
         </div>
       </div>
     </div>

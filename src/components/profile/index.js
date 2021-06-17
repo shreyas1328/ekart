@@ -2,12 +2,18 @@ import React, { useState, useEffect } from "react";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "../../styles/profile.scss";
 import { profileValidation } from "../utiles/validation";
 import { useSelector, useDispatch } from "react-redux";
 import { profileModal } from "../../datastore/slice/modal";
 import { setProfileData } from "../../datastore/slice/profile";
+import { Card } from "@material-ui/core";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import MultipleAddressTile from "./multipleAddressTile";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -18,18 +24,19 @@ export default function Profile() {
   const [state, setState] = useState({
     name: "",
     email: "",
-    address1: "",
-    address2: "",
+    selected: 0,
   });
 
   const [error, setError] = useState({});
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
-    setState({
-      ...state,
-      ...profileData,
-    });
+    if (profileData.name || profileData.email) {
+      setState({
+        ...state,
+        ...profileData,
+      });
+    }
   }, [profileData]);
 
   useEffect(() => {
@@ -37,6 +44,8 @@ export default function Profile() {
       onProfileSave();
     }
   }, [error, clicked]);
+
+  console.log(error);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -47,6 +56,13 @@ export default function Profile() {
       return;
     }
     dispatch(profileModal(open));
+  };
+
+  const onAddressSelect = (id) => {
+    setState({
+      ...state,
+      selected: id,
+    });
   };
 
   const onProfileSave = () => {
@@ -66,7 +82,15 @@ export default function Profile() {
   const onSubmit = (e) => {
     e.preventDefault();
     setClicked(true);
-    setError(profileValidation(state));
+
+    if (profileData.arrayAddress.length <= 0) {
+      setError({
+        ...profileValidation(state),
+        addressError: "Please select an address",
+      });
+    } else {
+      setError(profileValidation(state));
+    }
   };
 
   return (
@@ -75,6 +99,7 @@ export default function Profile() {
         className="profile-swipeable-container"
         anchor={"right"}
         open={profile.profileModal}
+        // open={true}
         onClose={toggleDrawer("right", false)}
         onOpen={toggleDrawer("right", true)}
       >
@@ -104,7 +129,7 @@ export default function Profile() {
               helperText={error?.email}
               required
             />
-            <TextField
+            {/* <TextField
               className="profile-field-input"
               label="Address Line 1"
               name="address1"
@@ -121,7 +146,14 @@ export default function Profile() {
               onChange={onTextChange}
               helperText={error?.address2}
               required
+            /> */}
+
+            <MultipleAddressTile
+              selected={state.selected}
+              onAddressSelect={onAddressSelect}
+              addressError={error?.addressError}
             />
+
             <Button className="profile-save-button" type="submit">
               Save
             </Button>

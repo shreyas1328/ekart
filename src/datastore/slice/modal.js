@@ -6,6 +6,7 @@ const initialState = {
   profileModal:false,
   logoutModal:false,
   orderPlacedModal:false,
+  addressModal:false,
 }
 
 export const modalSlice = createSlice({
@@ -20,10 +21,13 @@ export const modalSlice = createSlice({
     },
     orderPlacedModal:(state, action) => {
         state.orderPlacedModal = action.payload;
-    }
+    },
+    addressModal:(state, action) => {
+        state.addressModal = action.payload;
+    },
   },
 })
 
-export const { profileModal, logoutModal, orderPlacedModal } = modalSlice.actions;
+export const { profileModal, logoutModal, orderPlacedModal, addressModal } = modalSlice.actions;
 
 export default modalSlice.reducer

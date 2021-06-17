@@ -14,6 +14,7 @@ import Checkout from "../components/checkout";
 import Profile from "../components/profile";
 import LogoutModel from '../components/modals/logout';
 import OrderPlacedModal from '../components/modals/orderPlaced';
+import AddressModal from '../components/modals/addressModal';
 import { useSelector } from "react-redux";
 
 export default function Dashboard() {
@@ -32,6 +33,7 @@ export default function Dashboard() {
     <Router>
       <LogoutModel/>
       <OrderPlacedModal/>
+      <AddressModal/>
       <Profile />
       {!login?.username ? (
         <Switch>

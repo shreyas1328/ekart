@@ -29,6 +29,19 @@ export const profileValidation = (values) => {
         errors.email = "Email Address format is invalid";
       }
 
+    // if(!values.address1){
+    //     errors.address1 = "This field cannot be empty"
+    // }
+
+    // if(!values.address2){
+    //     errors.address2 = "This field cannot be empty"
+    // }
+
+    return errors;
+}
+
+export const addressValidation = (values) => {
+    const  errors = {};
     if(!values.address1){
         errors.address1 = "This field cannot be empty"
     }
@@ -36,6 +49,5 @@ export const profileValidation = (values) => {
     if(!values.address2){
         errors.address2 = "This field cannot be empty"
     }
-
     return errors;
-}
+} 
