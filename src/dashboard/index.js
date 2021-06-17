@@ -15,10 +15,19 @@ import Profile from "../components/profile";
 import LogoutModel from '../components/modals/logout';
 import OrderPlacedModal from '../components/modals/orderPlaced';
 import AddressModal from '../components/modals/addressModal';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import {showToast, closeToast} from '../datastore/slice/toast';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export default function Dashboard() {
+  const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
+  const myToast = useSelector((state) => state.toast);
   useEffect(() => {
     // if (window.matchMedia("(display-mode: standalone)").matches) {
     //   console.log("qwer");
@@ -29,12 +38,24 @@ export default function Dashboard() {
     console.log(login);
   }, [login.username]);
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    dispatch(closeToast());
+  };
+
   return (
     <Router>
       <LogoutModel/>
       <OrderPlacedModal/>
       <AddressModal/>
       <Profile />
+      <Snackbar open={myToast.show} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={myToast.severity} >
+          {myToast.message}
+        </Alert>
+      </Snackbar>
       {!login?.username ? (
         <Switch>
           <Route path="/login" component={Login} />

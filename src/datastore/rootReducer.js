@@ -8,6 +8,7 @@ import home from './slice/home';
 import description from './slice/description';
 import cart from './slice/cart';
 import profile from './slice/profile';
+import toast from './slice/toast';
 
 const reducer = combineReducers({
   login,
@@ -15,7 +16,8 @@ const reducer = combineReducers({
   home,
   description,
   cart,
-  profile
+  profile,
+  toast,
 });
 
 const rootReducer = persistReducer(

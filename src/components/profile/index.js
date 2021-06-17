@@ -2,18 +2,14 @@ import React, { useState, useEffect } from "react";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "../../styles/profile.scss";
 import { profileValidation } from "../utiles/validation";
 import { useSelector, useDispatch } from "react-redux";
 import { profileModal } from "../../datastore/slice/modal";
 import { setProfileData } from "../../datastore/slice/profile";
-import { Card } from "@material-ui/core";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import MultipleAddressTile from "./multipleAddressTile";
+import { showToast } from "../../datastore/slice/toast";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -69,6 +65,10 @@ export default function Profile() {
     //save profile
     dispatch(setProfileData(state));
     dispatch(profileModal(false));
+    dispatch(showToast({
+      message: `Profile Updated`,
+      severity: "info",
+    }))
   };
 
   const onTextChange = (e) => {

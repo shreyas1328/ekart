@@ -4,7 +4,12 @@ import Button from "@material-ui/core/Button";
 import "../../styles/description.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneItem } from "../../datastore/slice/description";
-import { getCartOneItem, addToCart, removeItem } from "../../datastore/slice/cart";
+import {
+  getCartOneItem,
+  addToCart,
+  removeItem,
+} from "../../datastore/slice/cart";
+import { showToast } from "../../datastore/slice/toast";
 import { useParams } from "react-router-dom";
 
 export default function Description() {
@@ -20,7 +25,7 @@ export default function Description() {
     dispatch(getCartOneItem(params.id));
     setState(cartOneItem?.quantity ? cartOneItem.quantity : 0);
     console.log("qwerty ", cartOneItem);
-  }, [params.id, data,cartOneItem]);
+  }, [params.id, data, cartOneItem]);
 
   console.log("my data ", cartOneItem);
 
@@ -36,22 +41,33 @@ export default function Description() {
 
   const onAddToCart = () => {
     console.log("my asd ", cartOneItem);
-    if(state > 0) {
+    if (state > 0) {
       dispatch(
         addToCart({
           ...data,
           quantity: state,
         })
       );
-    dispatch(getCartOneItem(params.id));
-
-    }else {
+      // dispatch(getCartOneItem(params.id));
+      dispatch(
+        showToast({
+          message: `Item added into cart`,
+          severity: "info",
+        })
+      );
+    } else {
       //if item quantity was more than 0 but user made it 0 after edit
-      console.log("qwertykljhgfdsdf", cartOneItem?.quantity > 0);
-      if(cartOneItem?.quantity > 0){
-        dispatch(removeItem(params.id))
+      if (cartOneItem?.quantity > 0) {
+        dispatch(removeItem(params.id));
+        dispatch(
+          showToast({
+            message: `Item removed from cart`,
+            severity: "warning",
+          })
+        );
       }
     }
+    dispatch(getCartOneItem(params.id));
   };
 
   return (

@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { profileModal, orderPlacedModal } from "../../../datastore/slice/modal";
+import { showToast } from "../../../datastore/slice/toast";
 import { useHistory } from "react-router-dom";
 
 export default function CheckoutDetails() {
@@ -20,6 +21,10 @@ export default function CheckoutDetails() {
     if(profileData.name && cartAllData.length > 0){
       dispatch(orderPlacedModal(true));
     }else if(cartAllData.length <= 0) {
+      dispatch(showToast({
+        message: `Please add an item into cart.`,
+        severity: "warning",
+      }))
       history.push("/");
     }else if(!profileData.name) {
       onEditDetails();
