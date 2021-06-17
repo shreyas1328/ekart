@@ -13,7 +13,7 @@ export default function Home() {
       <Grid container alignContent='center' alignItems='center' justify='center' spacing={1}>
         <Grid container item xs={12} spacing={1}>
           {homeData.data.map((val, index) => (
-            <Grid item xs={3}>
+            <Grid item xs={3} key={val.id} >
               <Tile data={val} key={index} />
             </Grid>
           ))}

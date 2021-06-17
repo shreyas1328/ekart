@@ -5,13 +5,15 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import '../styles/modal.scss'
 import Login from "../components/login";
 import Home from "../components/home";
 import Description from "../components/description";
 import Wrapper from "../components/wrapper";
 import Checkout from "../components/checkout";
 import Profile from "../components/profile";
-import LogoutModel from '../components/modals/logout'
+import LogoutModel from '../components/modals/logout';
+import OrderPlacedModal from '../components/modals/orderPlaced';
 import { useSelector } from "react-redux";
 
 export default function Dashboard() {
@@ -29,6 +31,7 @@ export default function Dashboard() {
   return (
     <Router>
       <LogoutModel/>
+      <OrderPlacedModal/>
       <Profile />
       {!login?.username ? (
         <Switch>

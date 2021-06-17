@@ -7,11 +7,13 @@ import "../../styles/profile.scss";
 import { profileValidation } from "../utiles/validation";
 import { useSelector, useDispatch } from "react-redux";
 import { profileModal } from "../../datastore/slice/modal";
+import { setProfileData } from "../../datastore/slice/profile";
 
 export default function Profile() {
   const dispatch = useDispatch();
 
   const profile = useSelector((state) => state.modal);
+  const profileData = useSelector((state) => state.profile);
 
   const [state, setState] = useState({
     name: "",
@@ -22,6 +24,13 @@ export default function Profile() {
 
   const [error, setError] = useState({});
   const [clicked, setClicked] = useState(false);
+
+  useEffect(() => {
+    setState({
+      ...state,
+      ...profileData,
+    });
+  }, [profileData]);
 
   useEffect(() => {
     if (Object.keys(error).length === 0 && clicked) {
@@ -37,11 +46,13 @@ export default function Profile() {
     ) {
       return;
     }
-    dispatch(profileModal(open))
+    dispatch(profileModal(open));
   };
 
   const onProfileSave = () => {
     //save profile
+    dispatch(setProfileData(state));
+    dispatch(profileModal(false));
   };
 
   const onTextChange = (e) => {
@@ -56,9 +67,7 @@ export default function Profile() {
     e.preventDefault();
     setClicked(true);
     setError(profileValidation(state));
-
   };
-
 
   return (
     <div className="profil-e-container">
@@ -114,11 +123,9 @@ export default function Profile() {
               required
             />
             <Button className="profile-save-button" type="submit">
-            Save
-          </Button>
+              Save
+            </Button>
           </form>
-
-          
         </div>
       </SwipeableDrawer>
     </div>

@@ -8,6 +8,19 @@
         display: flex;
         .checkout-left-container{
             width:50%;
+            .checkout-no-item-container{
+                padding: 20px 40px;
+                display: flex;
+                .checkout-no-item-icon{
+                    color:red;
+                }
+                .checkout-no-item{
+                    color: red;
+                    fontweight:bold;
+                    margin-left: 5px;
+                }
+            }
+            
             .checkout-tile-card {
                 margin: 20px;
                 padding: 20px 0;

@@ -7,6 +7,7 @@ import modal from './slice/modal';
 import home from './slice/home';
 import description from './slice/description';
 import cart from './slice/cart';
+import profile from './slice/profile';
 
 const reducer = combineReducers({
   login,
@@ -14,13 +15,14 @@ const reducer = combineReducers({
   home,
   description,
   cart,
+  profile
 });
 
 const rootReducer = persistReducer(
   {
     key: 'root',
     storage: storage,
-    whitelist: ["login"],
+    whitelist: ["login","profile"],
   },
   reducer,
 );

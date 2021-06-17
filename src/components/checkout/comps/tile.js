@@ -10,7 +10,7 @@ export default function CheckoutTile({ data }) {
   const history = useHistory();
   const calculateTotal = () => {
     const { price, quantity } = data;
-    return price * quantity;
+    return (price * quantity).toFixed(2);
   };
 
   const onCardClick = () => {

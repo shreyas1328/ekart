@@ -26,8 +26,8 @@ export default function Header() {
   };
 
   const onLogoClick = () => {
-    history.push("/")
-  }
+    history.push("/");
+  };
 
   return (
     <div className="header-container">
@@ -36,15 +36,19 @@ export default function Header() {
       </div>
       <div className="header-right-container">
         <div className="cart-container" onClick={onCartClick}>
-          {cart.cartAllData.length > 0 ? <p className="cart-count">{cart.cartAllData.length}</p> : <></>}
+          {cart.cartAllData.length > 0 ? (
+            <p className="cart-count">{cart.cartAllData.length}</p>
+          ) : (
+            <></>
+          )}
 
-          <ShoppingCartIcon style={{ fontSize: "28px" }} color="#000000" />
+          <ShoppingCartIcon style={{ fontSize: "28px", color: "#000000" }} />
         </div>
         <div className="profile-container" onClick={onProfile}>
-          <AccountCircleIcon color="#000000" style={{ fontSize: "28px" }} />
+          <AccountCircleIcon style={{ fontSize: "28px", color: "#000000" }} />
         </div>
         <div className="profile-container" onClick={onLogout}>
-          <ExitToAppIcon color="#000000" style={{ fontSize: "28px" }} />
+          <ExitToAppIcon style={{ fontSize: "28px", color: "#000000" }} />
         </div>
       </div>
     </div>
