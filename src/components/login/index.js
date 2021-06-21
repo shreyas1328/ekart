@@ -4,8 +4,8 @@ import "../../styles/login.scss";
 import { Logo } from "../utiles/utiles";
 import Button from "@material-ui/core/Button";
 import { loginValidation } from "../utiles/validation";
-import {getLoginData} from '../../datastore/slice/login';
-import {useDispatch} from 'react-redux';
+import { getLoginData } from "../../datastore/slice/login";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ export default function Login() {
   };
 
   const onLoggedIn = () => {
-    dispatch(getLoginData(state))
+    dispatch(getLoginData(state));
   };
 
   return (
@@ -85,7 +85,7 @@ export default function Login() {
         </form>
       </div>
       <div className="login-right-container">
-        <Logo color="#ffffff" size="70px" onClick={() => {}} />
+        <Logo color="#000000" size="70px" onClick={() => {}} />
       </div>
     </div>
   );
