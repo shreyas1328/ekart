@@ -14,6 +14,9 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
 
 export default function MultipleAddressTile({
   selected,
@@ -38,10 +41,12 @@ export default function MultipleAddressTile({
   };
 
   return (
-    <div className="profile-address-container">
-      <Typography className="profile-address-title">Address</Typography>
+    <Paper className="profile-address-container">
+      <Typography className="profile-address-title" variant="subtitle1">
+        Address
+      </Typography>
       {addressError ? (
-        <Typography className="profile-address-addressError">
+        <Typography className="profile-address-addressError" variant="h4">
           {addressError}
         </Typography>
       ) : (
@@ -56,7 +61,7 @@ export default function MultipleAddressTile({
       >
         {profile.arrayAddress?.map((val, index) => (
           <Card className="profile-address-card">
-            <div
+            <Paper
               className="profile-address-left-block"
               onClick={() => onCardClick(index)}
             >
@@ -65,21 +70,13 @@ export default function MultipleAddressTile({
                 value={index}
                 control={<Radio />}
               />
-              <Typography
-                className="profile-address-text1"
-                component={"p"}
-                variant="p"
-              >
+              <Typography className="profile-address-text1" variant="subtitle1">
                 {val.address1}
               </Typography>
-              <Typography
-                className="profile-address-text2"
-                component={"p"}
-                variant="p"
-              >
+              <Typography className="profile-address-text2" variant="subtitle1">
                 {val.address2}
               </Typography>
-            </div>
+            </Paper>
             <Button
               className="profile-address-right-block"
               onClick={() => onDeleteClick(index)}
@@ -93,6 +90,6 @@ export default function MultipleAddressTile({
       <Button className="profile-add-address-button" onClick={onAddAddress}>
         Add Address
       </Button>
-    </div>
+    </Paper>
   );
 }

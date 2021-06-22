@@ -5,27 +5,27 @@ import "../../styles/checkout.scss";
 import CheckoutDetails from "./comps/checkoutDetails";
 import { useSelector } from "react-redux";
 import InfoIcon from "@material-ui/icons/Info";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
 
-const data = {
-  id: 1,
-  title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-  price: 109.95,
-  description:
-    "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-  category: "men's clothing",
-  image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-};
+const useStyles = makeStyles((theme) => ({
+  errorText: {
+    color: theme.palette.error.main,
+  },
+}));
 
 export default function Checkout() {
+  const classes = useStyles();
   const { cartAllData } = useSelector((state) => state.cart);
 
   return (
-    <div className="checkout-container">
-      <Typography className="checkout-title" component="h4" variant="h4">
+    <Paper className="checkout-container">
+      <Typography className="checkout-title" variant="h4" color="secondary">
         Checkout
       </Typography>
-      <div className="checkout-main">
-        <div className="checkout-left-container">
+      <Paper className="checkout-main">
+        <Paper className="checkout-left-container">
           {cartAllData.length > 0 ? (
             <>
               {cartAllData.map((val, index) => (
@@ -33,22 +33,24 @@ export default function Checkout() {
               ))}
             </>
           ) : (
-            <div className='checkout-no-item-container' >
-              <InfoIcon className='checkout-no-item-icon' />
+            <Box className="checkout-no-item-container">
+              <InfoIcon
+                className={`checkout-no-item-icon ${classes.errorText}`}
+              />
               <Typography
-                className="checkout-no-item"
-                component="p"
-                variant="p"
+                className={`checkout-no-item ${classes.errorText}`}
+                variant="subtitle1"
+                color="secondary"
               >
                 No item in your cart.
               </Typography>
-            </div>
+            </Box>
           )}
-        </div>
-        <div className="checkout-right-container">
+        </Paper>
+        <Box className="checkout-right-container">
           <CheckoutDetails />
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Paper>
+    </Paper>
   );
 }

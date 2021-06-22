@@ -11,6 +11,14 @@ import { addressModal } from "../../datastore/slice/modal";
 import { addAddresses } from "../../datastore/slice/profile";
 import TextField from "@material-ui/core/TextField";
 import { addressValidation } from "../utiles/validation";
+// import Box from "@material-ui/core/Box";
+// import { makeStyles } from "@material-ui/core/styles";
+
+// const useStyles = makeStyles((theme) => ({
+//   dialogTitle: {
+//     color: theme.palette.secondary.main,
+//   },
+// }));
 
 function PaperComponent(props) {
   return <Paper {...props} />;
@@ -18,6 +26,7 @@ function PaperComponent(props) {
 
 export default function AddressModal() {
   const dispatch = useDispatch();
+  // const classes = useStyles();
   const address = useSelector((state) => state.modal);
   const [state, setState] = useState({
     address1: "",
@@ -57,14 +66,14 @@ export default function AddressModal() {
   };
 
   return (
-    <div>
+    <Paper>
       <Dialog
         open={address.addressModal}
         onClose={handleClose}
         PaperComponent={PaperComponent}
         aria-labelledby="draggable-dialog-title"
       >
-        <DialogTitle id="draggable-dialog-title">Address</DialogTitle>
+        <DialogTitle  id={`draggable-dialog-title`}>Address</DialogTitle>
         <DialogContent>
           <TextField
             style={{ width: "100%", marginBottom: "10px" }}
@@ -107,6 +116,6 @@ export default function AddressModal() {
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Paper>
   );
 }

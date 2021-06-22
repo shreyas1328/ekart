@@ -10,10 +10,19 @@ import { profileModal } from "../../datastore/slice/modal";
 import { setProfileData } from "../../datastore/slice/profile";
 import MultipleAddressTile from "./multipleAddressTile";
 import { showToast } from "../../datastore/slice/toast";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  backgroundSecondary: {
+    color: theme.palette.secondary.main,
+  },
+}));
 
 export default function Profile() {
   const dispatch = useDispatch();
-
+  const classes = useStyles();
   const profile = useSelector((state) => state.modal);
   const profileData = useSelector((state) => state.profile);
 
@@ -65,10 +74,12 @@ export default function Profile() {
     //save profile
     dispatch(setProfileData(state));
     dispatch(profileModal(false));
-    dispatch(showToast({
-      message: `Profile Updated`,
-      severity: "info",
-    }))
+    dispatch(
+      showToast({
+        message: `Profile Updated`,
+        severity: "info",
+      })
+    );
   };
 
   const onTextChange = (e) => {
@@ -94,7 +105,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="profil-e-container">
+    <Paper className="profil-e-container">
       <SwipeableDrawer
         className="profile-swipeable-container"
         anchor={"right"}
@@ -103,13 +114,15 @@ export default function Profile() {
         onClose={toggleDrawer("right", false)}
         onOpen={toggleDrawer("right", true)}
       >
-        <div
+        <Paper
           className="profile-main"
           role="presentation"
           //   onClick={toggleDrawer(anchor, false)}
           //   onKeyDown={toggleDrawer("right", false)}
         >
-          <AccountCircleIcon className="profile-icon" />
+          <AccountCircleIcon
+            className={`profile-icon ${classes.backgroundSecondary}`}
+          />
           <form className="profile-field-wrapper" onSubmit={onSubmit}>
             <TextField
               className="profile-field-input"
@@ -158,8 +171,8 @@ export default function Profile() {
               Save
             </Button>
           </form>
-        </div>
+        </Paper>
       </SwipeableDrawer>
-    </div>
+    </Paper>
   );
 }

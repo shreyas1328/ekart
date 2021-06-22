@@ -5,6 +5,9 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core";
 
 export default function CheckoutTile({ data }) {
   const history = useHistory();
@@ -19,7 +22,7 @@ export default function CheckoutTile({ data }) {
 
   return (
     <Card className="checkout-tile-card" onClick={onCardClick}>
-      <div className="checkout-tile-card-action">
+      <Paper className="checkout-tile-card-action">
         <img
           className="checkout-tile-image"
           src={data.image}
@@ -29,21 +32,21 @@ export default function CheckoutTile({ data }) {
           <Typography
             className="checkout-tile-title"
             variant="h5"
-            component="h3"
+            color='secondary'
           >
             {data.title}
           </Typography>
 
-          <div className="checkout-item-count-container">
-            <Typography className="checkout-tile-price" component="p">
+          <Box className="checkout-item-count-container">
+            <Typography className="checkout-tile-price" variant="subtitle1" color='secondary' >
               ${`${data.price} x ${data.quantity}`}
             </Typography>
-          </div>
-          <Typography className="checkout-tile-price" component="p">
+          </Box>
+          <Typography className="checkout-tile-price" variant="subtitle1" color='secondary'>
             ${calculateTotal()}
           </Typography>
         </CardContent>
-      </div>
+      </Paper>
     </Card>
   );
 }

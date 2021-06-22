@@ -12,12 +12,12 @@
                 padding: 20px 40px;
                 display: flex;
                 .checkout-no-item-icon{
-                    color:red;
+                    // color:red;
                 }
                 .checkout-no-item{
                     color: red;
                     fontweight:bold;
-                    margin-left: 5px;
+                    // margin-left: 5px;
                 }
             }
             
@@ -42,7 +42,7 @@
                         }
         
                         .checkout-tile-price {
-                            margin-top: 20px;
+                            margin-top: 10px;
                         }
         
                         .checkout-item-count-container {
@@ -111,11 +111,11 @@
                         text-align:center;
                     }
                     .checkout-details-button-edit{
-                        background-color: blue;
-                        color:white;
+                        // background-color: blue;
+                        // color:white;
                     }
                     .checkout-details-button-place{
-                        background-color:gray;
+                        // background-color:gray;
                     }
                 }
                

@@ -5,14 +5,14 @@ import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import "../../styles/login.scss";
-import { Logo } from "../utiles/utiles";
+import { Logo } from "../../components/utiles/utiles";
 import Button from "@material-ui/core/Button";
-import { loginValidation } from "../utiles/validation";
+import { loginValidation } from "../../components/utiles/validation";
 import { getLoginData } from "../../datastore/slice/login";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 
-const useTheme = makeStyles(theme => ({
+const useTheme = makeStyles({
   loginContainer: {
     width: "100vw",
     height: "100vh",
@@ -45,7 +45,7 @@ const useTheme = makeStyles(theme => ({
   loginButton: {
     marginTop: "10px",
     width: "100%",
-    // backgroundColor: "gray",
+    backgroundColor: "gray",
     // color: "black",
     fontWeight: "550",
   },
@@ -56,9 +56,9 @@ const useTheme = makeStyles(theme => ({
     justifyContent: "center",
     textAlign:'center',
     elevation:0,
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: "red",
   },
-}));
+});
 
 const useHelperTextStyles = makeStyles(() => ({
     root: {
@@ -108,7 +108,7 @@ export default function Login() {
     <Paper className={classes.loginContainer} >
       <Paper className={classes.loginLeftContainer}>
         <Paper variant='div' className={classes.loginWelcomeWrapper}>
-          <Typography variant="h1" color='secondary' className={classes.loginWelcomeText}>
+          <Typography variant="h1" className={classes.loginWelcomeText}>
             Welcome
           </Typography>
         </Paper>
@@ -150,6 +150,8 @@ export default function Login() {
           </Box>
           <Button
             className={classes.loginButton}
+            variant="contained"
+            color="primary"
             type="submit"
           >
             Login

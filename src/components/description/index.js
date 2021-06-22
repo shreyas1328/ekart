@@ -11,9 +11,19 @@ import {
 } from "../../datastore/slice/cart";
 import { showToast } from "../../datastore/slice/toast";
 import { useParams } from "react-router-dom";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  backgroundPrimary: {
+    backgroundColor: theme.palette.primary.main,
+  },
+}));
 
 export default function Description() {
   const dispatch = useDispatch();
+  const classes = useStyles();
   const { data } = useSelector((state) => state.description);
   const { cartOneItem, cartAllData } = useSelector((state) => state.cart);
   const params = useParams();
@@ -71,52 +81,50 @@ export default function Description() {
   };
 
   return (
-    <div className="description-container">
-      <div className="description-left-container">
+    <Paper className="description-container">
+      <Paper className="description-left-container">
         <img
           className="description-item-image"
           src={data?.image}
           alt={data?.title ? data?.title : "ekart"}
         />
-      </div>
-      <div className="description-right-container">
-        <Typography
-          className="description-item-title"
-          component="h1"
-          variant="h4"
-        >
+      </Paper>
+      <Paper className="description-right-container">
+        <Typography className="description-item-title" variant="h3">
           {data?.title}
         </Typography>
-        <Typography className="description-item-description">
+        <Typography className="description-item-description" variant="body1">
           {data?.description}
         </Typography>
-        <Typography className="description-item-price">
+        <Typography className="description-item-price" variant="h5">
           ${data?.price}
         </Typography>
-        <Typography className="description-item-add-card">
+        <Typography className="description-item-add-card" variant="body1">
           Add to cart
         </Typography>
-        <div className="description-item-count-container">
+        <Box className="description-item-count-container">
           <Button
-            className="description-item-count-button"
+            className={`description-item-count-button`}
             onClick={() => onQuantityChange(true)}
           >
             +
           </Button>
-          <Typography className="description-item-count">{state}</Typography>
+          <Typography className="description-item-count" variant="body1">
+            {state}
+          </Typography>
           <Button
-            className="description-item-count-button"
+            className={`description-item-count-button`}
             onClick={() => onQuantityChange(false)}
           >
             -
           </Button>
-        </div>
-        <div className="description-item-checkout-wrapper">
+        </Box>
+        <Box className="description-item-checkout-wrapper">
           <Button className="description-item-checkout" onClick={onAddToCart}>
             Add to cart
           </Button>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Paper>
+    </Paper>
   );
 }

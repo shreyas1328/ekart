@@ -3,13 +3,14 @@ import Tile from "./comps/tile";
 import "../../styles/home.scss";
 import Grid from "@material-ui/core/Grid";
 import {useSelector} from 'react-redux';
+import Paper from "@material-ui/core/Paper";
 
 export default function Home() {
 
     const homeData = useSelector((state) => state.home);
 
   return (
-    <div className='home-container'>
+    <Paper className='home-container'  >
       <Grid container alignContent='center' alignItems='center' justify='center' spacing={1}>
         <Grid container item xs={12} spacing={1}>
           {homeData.data.map((val, index) => (
@@ -19,7 +20,7 @@ export default function Home() {
           ))}
         </Grid>
       </Grid>
-    </div>
+    </Paper>
   );
 }
 
