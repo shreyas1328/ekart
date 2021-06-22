@@ -6,9 +6,15 @@ import CardContent from "@material-ui/core/CardContent";
 import {useHistory} from 'react-router-dom';
 import { makeStyles } from "@material-ui/core";
 
+const useStyles = makeStyles(theme=>({
+  homeTilePrice:{
+    fontSize: '1rem',
+  }
+}));
 
 export default function Tile({ data }) {
   const history = useHistory();
+  const classes = useStyles();
 
   const onCardClick = () => {
     history.push(`/description/${data.id}`)
@@ -22,7 +28,7 @@ export default function Tile({ data }) {
           <Typography color='secondary' className="home-tile-title" variant="h5">
             {data.title}
           </Typography>
-          <Typography color='secondary' className="home-tile-price" variant="subtitle1">
+          <Typography color='secondary' className={`home-tile-price ${classes.homeTilePrice}`} variant="subtitle1">
             ${data.price}
           </Typography>
         </CardContent>

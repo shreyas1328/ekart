@@ -12,9 +12,9 @@ import { getLoginData } from "../../datastore/slice/login";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 
-const useTheme = makeStyles(theme => ({
+const useTheme = makeStyles((theme) => ({
   loginContainer: {
-    width: "100vw",
+    // width: "100vw",
     height: "100vh",
     display: "flex",
     flexDirection: "row",
@@ -31,8 +31,8 @@ const useTheme = makeStyles(theme => ({
     marginBottom: "50px",
   },
   loginWelcomeText: {
-    fontSize: "40px",
-    textAlign:'center'
+    fontSize: `calc(${theme.typography.h1.fontSize} * 2.5)`,
+    textAlign: "center",
   },
   loginFormContainer: {},
   loginInputWrapper: {
@@ -54,16 +54,16 @@ const useTheme = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    textAlign:'center',
-    elevation:0,
+    textAlign: "center",
+    elevation: 0,
     backgroundColor: theme.palette.primary.main,
   },
 }));
 
 const useHelperTextStyles = makeStyles(() => ({
-    root: {
-        color: 'red'
-    }
+  root: {
+    color: "red",
+  },
 }));
 
 export default function Login() {
@@ -105,10 +105,14 @@ export default function Login() {
   const helperTextStyles = useHelperTextStyles();
 
   return (
-    <Paper className={classes.loginContainer} >
+    <Paper className={classes.loginContainer}>
       <Paper className={classes.loginLeftContainer}>
-        <Paper variant='div' className={classes.loginWelcomeWrapper}>
-          <Typography variant="h1" color='secondary' className={classes.loginWelcomeText}>
+        <Paper variant="div" className={classes.loginWelcomeWrapper}>
+          <Typography
+            variant="h1"
+            color="secondary"
+            className={classes.loginWelcomeText}
+          >
             Welcome
           </Typography>
         </Paper>
@@ -124,10 +128,10 @@ export default function Login() {
               onChange={onChange}
               name="username"
               FormHelperTextProps={{
-                classes:{
-                    root:helperTextStyles.root
-                }
-        }}
+                classes: {
+                  root: helperTextStyles.root,
+                },
+              }}
             />
           </Box>
           <Box className={classes.loginInputWrapper}>
@@ -142,21 +146,18 @@ export default function Login() {
               onChange={onChange}
               name="password"
               FormHelperTextProps={{
-                classes:{
-                    root:helperTextStyles.root
-                }
-        }}
+                classes: {
+                  root: helperTextStyles.root,
+                },
+              }}
             />
           </Box>
-          <Button
-            className={classes.loginButton}
-            type="submit"
-          >
+          <Button className={classes.loginButton} type="submit">
             Login
           </Button>
         </form>
       </Paper>
-      <Box className={classes.loginRightContainer} color='secondary' >
+      <Box className={classes.loginRightContainer} color="secondary">
         <Logo color="#000000" size="70px" onClick={() => {}} />
       </Box>
     </Paper>

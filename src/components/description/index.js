@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   backgroundPrimary: {
     backgroundColor: theme.palette.primary.main,
   },
+  descriptionItemDescription:{
+    fontSize: `calc(${theme.typography.body1.fontSize} * 1)`,
+  }
 }));
 
 export default function Description() {
@@ -93,7 +96,7 @@ export default function Description() {
         <Typography className="description-item-title" variant="h3">
           {data?.title}
         </Typography>
-        <Typography className="description-item-description" variant="body1">
+        <Typography className={`description-item-description ${classes.descriptionItemDescription}`} variant="body1">
           {data?.description}
         </Typography>
         <Typography className="description-item-price" variant="h5">

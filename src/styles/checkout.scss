@@ -11,12 +11,14 @@
             .checkout-no-item-container{
                 padding: 20px 40px;
                 display: flex;
+                align-items: center;
                 .checkout-no-item-icon{
                     // color:red;
                 }
                 .checkout-no-item{
                     color: red;
                     fontweight:bold;
+                    margin-left: 10px;
                     // margin-left: 5px;
                 }
             }
@@ -38,7 +40,7 @@
         
                     .checkout-tile-card-content {
                         .checkout-tile-title {
-                            font-size: 22px;
+                            // font-size: 22px;
                         }
         
                         .checkout-tile-price {

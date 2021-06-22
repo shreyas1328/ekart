@@ -9,8 +9,18 @@ import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core";
 
+const useStyles = makeStyles(theme => ({
+  checkoutTilePrice:{
+    fontSize: `calc(${theme.typography.subtitle1.fontSize} * 0.75)`,
+  },
+  checkoutTileTitle:{
+    fontSize: `calc(${theme.typography.h5.fontSize} * 1)`,
+  }
+}));
+
 export default function CheckoutTile({ data }) {
   const history = useHistory();
+  const classes = useStyles();
   const calculateTotal = () => {
     const { price, quantity } = data;
     return (price * quantity).toFixed(2);
@@ -30,7 +40,7 @@ export default function CheckoutTile({ data }) {
         />
         <CardContent className="checkout-tile-card-content">
           <Typography
-            className="checkout-tile-title"
+            className={`checkout-tile-title ${classes.checkoutTileTitle}`}
             variant="h5"
             color='secondary'
           >
@@ -38,11 +48,11 @@ export default function CheckoutTile({ data }) {
           </Typography>
 
           <Box className="checkout-item-count-container">
-            <Typography className="checkout-tile-price" variant="subtitle1" color='secondary' >
+            <Typography className={`checkout-tile-price ${classes.checkoutTilePrice}`} variant="subtitle1" color='secondary' >
               ${`${data.price} x ${data.quantity}`}
             </Typography>
           </Box>
-          <Typography className="checkout-tile-price" variant="subtitle1" color='secondary'>
+          <Typography className={`checkout-tile-price ${classes.checkoutTilePrice}`} variant="subtitle1" color='secondary'>
             ${calculateTotal()}
           </Typography>
         </CardContent>

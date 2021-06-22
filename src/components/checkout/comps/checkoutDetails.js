@@ -9,7 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   editButton: {
     backgroundColor: "#0000ff",
     color: "#ffffff",
@@ -19,7 +19,13 @@ const useStyles = makeStyles({
       color: "#0000ff",
     },
   },
-});
+  checkoutDetailsTitle:{
+    fontSize: `2rem`,
+  },
+  subtitleFontsize:{
+    fontSize: `calc(${theme.typography.subtitle1.fontSize} * 0.75)`,
+  }
+}));
 
 export default function CheckoutDetails() {
   const classes = useStyles();
@@ -52,7 +58,7 @@ export default function CheckoutDetails() {
   return (
     <Paper className="checkout-details-container">
       <Typography
-        className="checkout-details-title"
+        className={`checkout-details-title ${classes.checkoutDetailsTitle}`}
         variant="h4"
         color="secondary"
       >
@@ -60,21 +66,21 @@ export default function CheckoutDetails() {
       </Typography>
       <Paper className="checkout-details-wrapper">
         <Typography
-          className="checkout-details-title-text1"
+          className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
           color="secondary"
         >
           Name{" "}
         </Typography>
         <Typography
-          className="checkout-details-title-text1"
+          className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
           color="secondary"
         >
           :
         </Typography>
         <Typography
-          className="checkout-details-title-text2"
+          className={`checkout-details-title-text2 ${classes.subtitleFontsize}`}
           variant="subtitle1"
           color="secondary"
         >
@@ -83,21 +89,21 @@ export default function CheckoutDetails() {
       </Paper>
       <Paper className="checkout-details-wrapper">
         <Typography
-          className="checkout-details-title-text1"
+          className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
           color="secondary"
         >
           Email
         </Typography>
         <Typography
-          className="checkout-details-title-text1"
+          className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
           color="secondary"
         >
           :
         </Typography>
         <Typography
-          className="checkout-details-title-text2"
+          className={`checkout-details-title-text2 ${classes.subtitleFontsize}`}
           variant="subtitle1"
           color="secondary"
         >
@@ -106,14 +112,14 @@ export default function CheckoutDetails() {
       </Paper>
       <Paper className="checkout-details-wrapper">
         <Typography
-          className="checkout-details-title-text1"
+          className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
           color="secondary"
         >
           Address
         </Typography>
         <Typography
-          className="checkout-details-title-text1"
+          className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
           color="secondary"
         >
@@ -121,14 +127,14 @@ export default function CheckoutDetails() {
         </Typography>
         <Paper className="checkout-details-address">
           <Typography
-            className="checkout-details-title-text2"
+            className={`checkout-details-title-text2 ${classes.subtitleFontsize}`}
             variant="subtitle1"
             color="secondary"
           >
             {profileData.address1}
           </Typography>
           <Typography
-            className="checkout-details-title-text2"
+            className={`checkout-details-title-text2 ${classes.subtitleFontsize}`}
             variant="subtitle1"
             color="secondary"
           >

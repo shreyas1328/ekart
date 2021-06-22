@@ -12,7 +12,12 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   errorText: {
     color: theme.palette.error.main,
+    fontSize:theme.typography.subtitle1.fontSize,
   },
+  checkoutTitle:{
+    fontSize: `2rem`,
+  },
+
 }));
 
 export default function Checkout() {
@@ -21,7 +26,7 @@ export default function Checkout() {
 
   return (
     <Paper className="checkout-container">
-      <Typography className="checkout-title" variant="h4" color="secondary">
+      <Typography className={`checkout-title ${classes.checkoutTitle}`} variant="h4" color="secondary">
         Checkout
       </Typography>
       <Paper className="checkout-main">
