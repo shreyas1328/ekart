@@ -46,6 +46,10 @@ export default function AddressModal() {
     //continue
     dispatch(addAddresses(state));
     handleClose();
+    setState({
+      address1: "",
+    address2: "",
+    })
   };
 
   const handleClose = () => {

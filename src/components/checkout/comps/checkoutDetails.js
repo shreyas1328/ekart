@@ -68,21 +68,21 @@ export default function CheckoutDetails() {
         <Typography
           className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
-          color="secondary"
+          // color="secondary"
         >
           Name{" "}
         </Typography>
         <Typography
           className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
-          color="secondary"
+          // color="secondary"
         >
           :
         </Typography>
         <Typography
           className={`checkout-details-title-text2 ${classes.subtitleFontsize}`}
           variant="subtitle1"
-          color="secondary"
+          // color="secondary"
         >
           {profileData.name}
         </Typography>
@@ -91,21 +91,21 @@ export default function CheckoutDetails() {
         <Typography
           className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
-          color="secondary"
+          // color="secondary"
         >
           Email
         </Typography>
         <Typography
           className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
-          color="secondary"
+          // color="secondary"
         >
           :
         </Typography>
         <Typography
           className={`checkout-details-title-text2 ${classes.subtitleFontsize}`}
           variant="subtitle1"
-          color="secondary"
+          // color="secondary"
         >
           {profileData.email}
         </Typography>
@@ -114,14 +114,14 @@ export default function CheckoutDetails() {
         <Typography
           className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
-          color="secondary"
+          // color="secondary"
         >
           Address
         </Typography>
         <Typography
           className={`checkout-details-title-text1 ${classes.subtitleFontsize}`}
           variant="subtitle1"
-          color="secondary"
+          // color="secondary"
         >
           :
         </Typography>
@@ -129,14 +129,14 @@ export default function CheckoutDetails() {
           <Typography
             className={`checkout-details-title-text2 ${classes.subtitleFontsize}`}
             variant="subtitle1"
-            color="secondary"
+            // color="secondary"
           >
             {profileData.address1}
           </Typography>
           <Typography
             className={`checkout-details-title-text2 ${classes.subtitleFontsize}`}
             variant="subtitle1"
-            color="secondary"
+            // color="secondary"
           >
             {profileData.address2}
           </Typography>

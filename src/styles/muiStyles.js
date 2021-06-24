@@ -22,6 +22,7 @@ export const defaultTheme = (type, fontsize) => {
       h4: { fontWeight: 550, fontSize:`${1*fontsize}rem` },
       h5: { fontWeight: 550, fontSize:`${1*fontsize}rem` },
       h6  : { fontWeight: 400, fontSize:`${1*fontsize}rem` },
+      body2  : { fontWeight: 400, fontSize:`${1*fontsize}rem` },
       subtitle1: { fontWeight: 400, fontSize:`${1*fontsize}rem` },
     },
     overrides: {
@@ -76,8 +77,9 @@ export const flameTheme = (type, fontsize) => {
       h1: { fontWeight: 900, fontSize:`${1*fontsize}rem` },
       h4: { fontWeight: 550, fontSize:`${1*fontsize}rem` },
       h5: { fontWeight: 550, fontSize:`${1*fontsize}rem` },
+      h6  : { fontWeight: 400, fontSize:`${1*fontsize}rem` },
+      body2  : { fontWeight: 400, fontSize:`${1*fontsize}rem` },
       subtitle1: { fontWeight: 400, fontSize:`${1*fontsize}rem` },
-      // h6: { color: "#f1cece", fontWeight: 900 },
     },
     overrides: {
       MuiPaper: {

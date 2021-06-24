@@ -70,10 +70,10 @@ export default function MultipleAddressTile({
                 value={index}
                 control={<Radio />}
               />
-              <Typography className="profile-address-text1" variant="subtitle1">
+              <Typography className="profile-address-text1" variant="subtitle2">
                 {val.address1}
               </Typography>
-              <Typography className="profile-address-text2" variant="subtitle1">
+              <Typography className="profile-address-text2" variant="subtitle2">
                 {val.address2}
               </Typography>
             </Paper>

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
   },
   descriptionItemDescription:{
-    fontSize: `calc(${theme.typography.body1.fontSize} * 1)`,
+    fontSize: `calc(${theme.typography.body2.fontSize} * 1)`,
   }
 }));
 
@@ -102,7 +102,7 @@ export default function Description() {
         <Typography className="description-item-price" variant="h5">
           ${data?.price}
         </Typography>
-        <Typography className="description-item-add-card" variant="body1">
+        <Typography className="description-item-add-card" variant="body2">
           Add to cart
         </Typography>
         <Box className="description-item-count-container">
